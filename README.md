@@ -1,1 +1,22 @@
 # ThreadX---OS-Final-Project
+
+## Description
+This project is a menu-driven modular system developed in C to demonstrate core operating system concepts through practical implementation. The objective is to simulate how key OS components function in a real system while reinforcing theoretical knowledge. The system consists of multiple independent modules, each representing a fundamental operating system concept, including process management, synchronization, memory allocation, file handling, inter-process communication, and performance analysis. Each module is implemented as a separate executable and is launched from a central main menu using system calls such as fork(), exec(), and wait(). A centralized logging system is integrated across all modules to record user inputs and system actions with timestamps. A boot script is provided to automate compilation, manage project directories, and ensure consistent execution of the system. Overall, this project emphasizes modular design, low-level system programming using C, and a deeper understanding of how operating system concepts are applied in practice.
+
+## Team members + what each person did
+- Mariam Elsebai: Worked on file_management.c, created github repo and the README file.
+- Benita Tabuku: Worked on memory.c.
+- Yusupha Njie: Worked on logger.c, built the folder structure and is responsible for running and testing all programs together.
+- Cole Kelly: Worked on amdahl.c, boot.sh (boot script) and main_menu.c
+- Nokutenda Gumbie: Worked on peterson.c
+
+## Mini module descriptions
+- main menu module: This module serves as the central control interface of the system. It presents a menu to the user and allows selection of different OS modules.
+It uses process creation (fork) and program execution (execl) to launch each module as a separate process. The parent process waits for the selected module to complete before returning to the menu. All user actions and module launches are logged using the centralized logging system.
+- file mangaement module: this module provides basic file system operations using low-level system calls. It allows users to create, read, write, delete, and list files stored in a dedicated directory. The module demonstrates the use of system calls such as open(), read(), write(), close(), and unlink(). It also handles user input validation and prevents errors such as accessing non-existent files. All file operations are logged for tracking and debugging purposes.
+- peterson solution module: This module demonstrates process synchronization using Peterson’s algorithm for mutual exclusion between two processes. Two child processes are created and share memory using mmap(). The algorithm ensures that only one process enters the critical section at a time through the use of flags and a turn variable. The module simulates entry, critical, exit, and remainder sections, illustrating how busy waiting is used to enforce mutual exclusion.
+- memory allocation module: This module simulates dynamic memory management using the First-Fit allocation strategy. Users can allocate and deallocate memory blocks, view the memory map, and perform memory compaction. The system also handles fragmentation by merging adjacent free blocks and reorganizing memory when needed. The module demonstrates how operating systems manage memory efficiently and deal with fragmentation issues.
+- Amdahl’s Law Module: This module calculates the theoretical speedup of a program using Amdahl’s Law. Users input the parallel fraction and number of processing cores. The module computes the expected speedup and optionally compares serial and parallel execution times. It demonstrates the limitations of parallel computing and how performance scales with additional resources.
+- Logger module: This module acts as a centralized logging system for the entire project. All modules send messages to the logger using fork() and execl(). The logger records timestamped entries in a log file, allowing tracking of system activity and debugging. This demonstrates inter-process communication and modular system design.
+- Boot script: The boot script automates the setup and execution of the project. It removes old builds, creates required directories, compiles all modules, and launches the main menu. This ensures a consistent environment for running the system. The script simplifies project execution and demonstrates basic automation using shell scripting.
+  
